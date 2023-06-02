@@ -6,6 +6,6 @@ object Constants {
     const val JWT_REFRESH_KEY = "refresh_token"
 
     val excludedUrls = listOf(
-        "/api/v1/users/register", "/api/v1/users/send-auth-code", "/api/v1/users/check-auth-code",
+        "/api/v1/users/register/", "/api/v1/users/send-auth-code/", "/api/v1/users/check-auth-code/",
     )
 }

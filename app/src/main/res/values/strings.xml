@@ -3,5 +3,6 @@
     <string name="Profile">Профиль</string>
     <string name="SignIn">Авторизация</string>
     <string name="SignUp">Регистрация</string>
-    <string name="enter_hint">Введите номер телефона</string>
+    <string name="enter_number_hint">Введите номер телефона</string>
+    <string name="verify_hint">Подтвердите код</string>
 </resources>

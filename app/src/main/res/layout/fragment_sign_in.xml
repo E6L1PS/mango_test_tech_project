@@ -8,27 +8,70 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_phone_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        app:boxBackgroundMode="none"
+        android:layout_width="242dp"
+        android:layout_height="64dp"
         app:counterEnabled="false"
         app:counterMaxLength="12"
         app:endIconMode="clear_text"
+        android:background="@color/gray"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/countryCodePicker"
         app:layout_constraintTop_toTopOf="parent">
+
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ti_et_phone_number"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/bg_rounded_edit_text"
             android:ellipsize="end"
-            android:hint="@string/enter_hint"
+            android:hint="@string/enter_number_hint"
+            android:inputType="phone"
             android:singleLine="true"
-            android:textColor="@color/white" />
+            android:textColor="@color/orange" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.hbb20.CountryCodePicker
+        android:id="@+id/countryCodePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        app:ccpDialog_textColor="@color/orange"
+        app:ccp_arrowColor="@color/orange"
+        app:ccp_contentColor="@color/orange"
+        app:ccp_defaultLanguage="RUSSIAN"
+        app:ccp_defaultNameCode="ru"
+        android:background="@color/gray"
+        app:ccp_defaultPhoneCode="7"
+        app:ccp_flagBorderColor="@color/orange"
+        app:layout_constraintBottom_toBottomOf="@+id/til_phone_number" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_verify"
+        android:layout_width="242dp"
+        android:layout_height="64dp"
+        app:counterEnabled="false"
+        app:counterMaxLength="6"
+        app:endIconMode="clear_text"
+        android:background="@color/gray"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_phone_number">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ti_et_verify"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_rounded_edit_text"
+            android:ellipsize="end"
+            android:hint="@string/verify_hint"
+            android:inputType="numberDecimal"
+            android:singleLine="true"
+            android:textColor="@color/orange" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -39,5 +82,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/apply_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apply"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_verify" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

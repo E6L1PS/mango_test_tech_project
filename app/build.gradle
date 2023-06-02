@@ -39,7 +39,15 @@ android {
 }
 
 dependencies {
+
+    implementation 'com.hbb20:ccp:2.7.0'
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.20'
+
     implementation Libs.Other.ViewBindingDelegate
+
+    implementation Libs.Android.Room
+    implementation Libs.Android.RoomKtx
+    kapt Libs.Android.RoomCompiler
 
     implementation Libs.Squareup.Retrofit
     implementation Libs.Squareup.Converter
@@ -50,6 +58,7 @@ dependencies {
     implementation Libs.Google.Hilt
     implementation Libs.Google.Material
 
+    implementation Libs.Android.LifecycleViewModelKtx
     implementation Libs.Android.NavigationFragments
     implementation Libs.Android.NavigationUI
     implementation Libs.Android.CoreKtx

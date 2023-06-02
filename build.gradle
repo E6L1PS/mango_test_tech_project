@@ -29,6 +29,7 @@ buildscript {
                         NavigationFragments: "androidx.navigation:navigation-fragment-ktx:$nav_version",
                         NavigationUI: "androidx.navigation:navigation-ui-ktx:$nav_version",
                         Room: "androidx.room:room-runtime:$room_version",
+                        RoomKtx: "androidx.room:room-ktx:$room_version",
                         RoomCompiler: "androidx.room:room-compiler:$room_version",
                         SwipeRefreshLayout: "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0",
                 ],

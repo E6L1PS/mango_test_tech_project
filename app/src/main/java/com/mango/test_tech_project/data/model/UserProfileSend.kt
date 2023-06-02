@@ -1,5 +1,7 @@
 package com.mango.test_tech_project.data.model
 
+import com.mango.test_tech_project.data.db.entity.UserInfoEntity
+
 data class UserProfileSend(
     val avatar: String,
     val avatars: Avatars,
@@ -16,4 +18,10 @@ data class UserProfileSend(
     val status: String,
     val username: String,
     val vk: String
-)
+) {
+
+    fun toUserInfoEntity() = UserInfoEntity(
+        id, username, name, last, avatar, birthday, city, completed_task, created, online, status, phone, instagram, vk
+    )
+
+}
