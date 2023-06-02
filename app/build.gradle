@@ -1,0 +1,58 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    namespace 'com.mango.test_tech_project'
+    compileSdk target_android_sdk
+
+    defaultConfig {
+        applicationId "com.mango.test_tech_project"
+        minSdk min_android_sdk
+        targetSdk target_android_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+}
+
+dependencies {
+    implementation Libs.Other.ViewBindingDelegate
+
+    implementation Libs.Squareup.Retrofit
+    implementation Libs.Squareup.Converter
+    implementation Libs.Squareup.Interceptor
+
+    kapt Libs.Google.HiltCompiler
+    implementation Libs.Google.Gson
+    implementation Libs.Google.Hilt
+    implementation Libs.Google.Material
+
+    implementation Libs.Android.NavigationFragments
+    implementation Libs.Android.NavigationUI
+    implementation Libs.Android.CoreKtx
+    implementation Libs.Android.AppCompat
+    implementation Libs.Android.ConstraintLayout
+}

@@ -1,0 +1,87 @@
+buildscript {
+    ext {
+        //Libs
+        hilt_version = "2.44"
+        room_version = "2.4.1"
+        retrofit_version = "2.9.0"
+        coroutines_version = "1.6.1"
+        lifecycle_version = "2.6.1"
+        nav_version = "2.5.3"
+
+        //SDK
+        target_android_sdk = 33
+        min_android_sdk = 30
+
+
+
+        Libs = [
+                Android: [
+                        Annotation: "androidx.annotation:annotation:1.6.0",
+                        CoreKtx: "androidx.core:core-ktx:1.9.0",
+                        FragmentKtx: "androidx.fragment:fragment-ktx:1.5.5",
+                        ActivityKtx: "androidx.activity:activity-ktx:1.6.1",
+                        AppCompat: "androidx.appcompat:appcompat:1.6.1",
+                        LifecycleRuntimeKtx: "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version",
+                        LifecycleViewModelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+                        LifecycleLiveData: "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",
+                        ConstraintLayout: "androidx.constraintlayout:constraintlayout:2.1.4",
+                        RecyclerView: "androidx.recyclerview:recyclerview:1.2.1",
+                        NavigationFragments: "androidx.navigation:navigation-fragment-ktx:$nav_version",
+                        NavigationUI: "androidx.navigation:navigation-ui-ktx:$nav_version",
+                        Room: "androidx.room:room-runtime:$room_version",
+                        RoomCompiler: "androidx.room:room-compiler:$room_version",
+                        SwipeRefreshLayout: "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0",
+                ],
+                Google: [
+                        Material: "com.google.android.material:material:1.8.0",
+                        Hilt: "com.google.dagger:hilt-android:$hilt_version",
+                        HiltCompiler: "com.google.dagger:hilt-compiler:$hilt_version",
+                        Gson: "com.google.code.gson:gson:2.10.1",
+                ],
+                Squareup: [
+                        Retrofit: "com.squareup.retrofit2:retrofit:$retrofit_version",
+                        Converter: "com.squareup.retrofit2:converter-gson:$retrofit_version",
+                        Interceptor: "com.squareup.okhttp3:logging-interceptor:4.8.0",
+                ],
+                JetBrains: [
+                        CoroutinesCore: "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version",
+                        CoroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
+                ],
+                Testing: [
+                        JUnit: "junit:junit:4.13.2",
+                ],
+                Other: [
+                        Glide: 'com.github.bumptech.glide:glide:4.15.1',
+                        ViewBindingDelegate: "com.github.kirich1409:viewbindingpropertydelegate-full:1.5.8",
+                ],
+        ]
+
+        Modules = [
+                Data: ":data",
+                Core: [
+                        Navigation: ":core:navigation",
+                        Common: ":core:common",
+                        Theme: ":core:theme",
+                ],
+                Features: [
+                        Auth: ":features:auth",
+                        Ads: ":features:ads",
+                        Search: ":features:search",
+                        Favorites: ":features:favorites",
+                        PersonalAds: ":features:personal-ads",
+                        Messages: ":features:messages",
+                        Profile: ":features:profile",
+                ],
+        ]
+
+    }
+}
+
+plugins {
+    id 'androidx.navigation.safeargs' version "$nav_version" apply false
+    id 'com.google.dagger.hilt.android' version "$hilt_version" apply false
+    id 'com.android.application' version '7.4.1' apply false
+    id 'com.android.library' version '7.4.1' apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
+    id 'org.jetbrains.kotlin.jvm' version '1.8.0' apply false
+}
