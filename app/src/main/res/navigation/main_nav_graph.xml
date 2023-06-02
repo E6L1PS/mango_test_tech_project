@@ -3,12 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav_graph.xml"
-    app:startDestination="@id/navigation_person">
+    app:startDestination="@id/signInFragment">
 
     <fragment
-        android:id="@+id/navigation_person"
+        android:id="@+id/signInFragment"
+        android:name="com.mango.test_tech_project.presentation.sign_in_screen.SignInFragment"
+        android:label="@string/SignIn"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_profileFragment"
+            app:destination="@id/navigation_profile" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.mango.test_tech_project.presentation.sign_up_screen.SignUpFragment"
+        android:label="@string/SignUp"
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_signUpFragment_to_profileFragment"
+            app:destination="@id/navigation_profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_profile"
         android:name="com.mango.test_tech_project.presentation.profile_screen.ProfileFragment"
         android:label="@string/Profile"
         tools:layout="@layout/fragment_profile"/>
-
 </navigation>

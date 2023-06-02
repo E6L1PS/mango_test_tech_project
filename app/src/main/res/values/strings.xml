@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">test_tech_project</string>
     <string name="Profile">Профиль</string>
+    <string name="SignIn">Авторизация</string>
+    <string name="SignUp">Регистрация</string>
+    <string name="enter_hint">Введите номер телефона</string>
 </resources>
