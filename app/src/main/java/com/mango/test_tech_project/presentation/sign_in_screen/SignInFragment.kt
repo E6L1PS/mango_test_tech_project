@@ -39,7 +39,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
                             val direction = SignInFragmentDirections.actionSignInFragmentToVerifyFragment(binding.tiEtPhoneNumber.text.toString())
                             findNavController().navigate(direction)
                         } else {
-                            findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
+
                         }
                     }
 

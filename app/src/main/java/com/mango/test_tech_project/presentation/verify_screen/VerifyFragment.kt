@@ -48,7 +48,7 @@ class VerifyFragment : Fragment(R.layout.fragment_verify) {
                     }
 
                     is Resource.Error -> {
-                        Log.d("VerifyLog", "Error")
+                        Log.d("VerifyLog", "Error: ${it.message}")
                     }
 
                 }

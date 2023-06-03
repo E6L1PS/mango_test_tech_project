@@ -6,9 +6,11 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.mango.test_tech_project.R
 import com.mango.test_tech_project.databinding.FragmentProfileBinding
+import com.mango.test_tech_project.presentation.sign_in_screen.SignInFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
@@ -24,19 +26,30 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        with(binding.infoPerson) {
+            btnRefactorInfo.setOnClickListener {
+                val direction = ProfileFragmentDirections.actionNavigationProfileToEditProfileFragment(tvEmail.text.toString())
+                findNavController().navigate(direction)
+            }
+
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.profileInfo.onEach {
+                val userInfo = it
+                //TODO change logic
                 if (it != null) {
                     Log.d("InfoProfileLog", it.toString())
                     with(binding.infoPerson) {
-                        val localDate = LocalDate.parse(it.birthday)
-                        tvFullName.text = it.name
-                        tvId.text = "Пользователь номер ${it.id}"
-                        tvEmail.text = it.username
-                        tvPhone.text = it.phone
-                        tvLocation.text = it.city
-                        tvCalendar.text = it.created
-                        tvBirthday.text = it.birthday
+                        val localDate = LocalDate.parse(userInfo?.birthday ?: "2001-01-01")
+                        tvFullName.text = userInfo?.name ?: ""
+                        tvId.text = "Пользователь номер ${userInfo?.id ?: ""}"
+                        tvEmail.text = userInfo?.username ?: ""
+                        tvPhone.text = userInfo?.phone ?: ""
+                        tvLocation.text = userInfo?.city ?: ""
+                        tvCalendar.text = userInfo?.created ?: ""
+                        tvBirthday.text = userInfo?.birthday ?: ""
+                        tvInfo.text = getString(R.string.info, userInfo?.vk ?: "", userInfo?.instagram ?: "", userInfo?.status ?: "")
                         ivZodiac.setImageResource(determineZodiacSign(localDate.dayOfMonth, localDate.monthValue))
                     }
 

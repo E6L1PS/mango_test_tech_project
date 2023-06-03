@@ -7,4 +7,13 @@
     <string name="verify_hint">Подтвердите код</string>
     <string name="username">Введите username</string>
     <string name="name">Введите имя</string>
+    <string name="info">Обо мне:\nСсылка на vk: %1$s\nСсылка на instagram: %2$s\nCтатус: %3$s</string>
+    <string name="Edit">Изменить</string>
+    <string name="UploadPhoto">Загрузить фото</string>
+    <string name="enter_birthday">Введите дату рождения</string>
+    <string name="enter_location">Введите город проживания</string>
+    <string name="enter_vk">Введите ссылку на vk</string>
+    <string name="enter_instagram">Введите ссылку на instagram</string>
+    <string name="Upload">Обновить</string>
+    <string name="EditProfile">Редактировать профиль</string>
 </resources>

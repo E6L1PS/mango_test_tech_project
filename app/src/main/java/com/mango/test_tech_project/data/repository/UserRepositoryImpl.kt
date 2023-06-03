@@ -157,6 +157,7 @@ class UserRepositoryImpl @Inject constructor(
             val response = api.updateCurrentUser(userUpdate)
 
             if (response.isSuccessful) {
+                getCurrentUser()
                 Resource.success(response.body())
             } else {
                 Resource.error(response.message(), null)

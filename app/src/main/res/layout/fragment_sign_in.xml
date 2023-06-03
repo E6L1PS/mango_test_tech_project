@@ -55,10 +55,11 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="100dp"
         android:hint="@string/enter_number_hint"
-        app:boxStrokeColor="@color/gray"
-        android:outlineSpotShadowColor="@color/gray"
+        android:outlineSpotShadowColor="@color/white"
+        android:background="@color/gray"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:hintTextColor="@color/gray"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.fredporciuncula.phonemoji.PhonemojiTextInputEditText
@@ -69,8 +70,8 @@
             android:digits="0123456789"
             android:inputType="number"
             android:maxLength="16"
-            android:textColorHint="@color/gray"
-            android:textColor="@color/black" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/gray" />
 
     </com.fredporciuncula.phonemoji.PhonemojiTextInputLayout>
 
@@ -79,11 +80,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginBottom="100dp"
         android:text="Далее"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_phone_number"
+        app:layout_constraintVertical_bias="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

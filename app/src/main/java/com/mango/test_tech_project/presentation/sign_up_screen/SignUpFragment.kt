@@ -46,7 +46,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                     }
 
                     is Resource.Error -> {
-                        Log.d("isRegistered", "Error")
+                        Log.d("isRegistered", "Error: ${it.message}")
                         Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
                     }
                 }

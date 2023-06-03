@@ -11,9 +11,6 @@
         android:label="@string/SignIn"
         tools:layout="@layout/fragment_sign_in">
         <action
-            android:id="@+id/action_signInFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
-        <action
             android:id="@+id/action_signInFragment_to_verifyFragment"
             app:destination="@id/verifyFragment"
             app:popUpTo="@id/signInFragment"
@@ -36,7 +33,11 @@
         android:id="@+id/navigation_profile"
         android:name="com.mango.test_tech_project.presentation.profile_screen.ProfileFragment"
         android:label="@string/Profile"
-        tools:layout="@layout/fragment_profile"/>
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_navigation_profile_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/verifyFragment"
         android:name="com.mango.test_tech_project.presentation.verify_screen.VerifyFragment"
@@ -54,6 +55,18 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="number"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.mango.test_tech_project.presentation.edit_profile_screen.EditProfileFragment"
+        android:label="@string/EditProfile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+        <argument
+            android:name="username"
             app:argType="string" />
     </fragment>
 </navigation>

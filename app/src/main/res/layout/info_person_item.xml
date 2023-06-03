@@ -3,26 +3,62 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tv_full_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_avatar"
+        tools:text="Danil Pesternikov" />
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/info"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_full_name" />
+
+    <TextView
+        android:id="@+id/tv_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        tools:text="Номер пользователя 213123"
+        android:textSize="16sp"
+        android:textColor="@color/gray"
+        app:layout_constraintStart_toStartOf="@+id/tv_info"
+        app:layout_constraintTop_toBottomOf="@+id/tv_info" />
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/cv_avatar"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
         app:cardBackgroundColor="@color/cardview_shadow_end_color"
         app:cardCornerRadius="80dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/iv_avatar"
             android:layout_width="80dp"
             android:layout_height="80dp"
             app:srcCompat="@drawable/user" />
@@ -43,8 +79,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
-        android:textColor="@color/black"
-
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/iv_location"
         app:layout_constraintStart_toEndOf="@id/iv_location"
@@ -74,25 +108,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
-        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/iv_phone"
         app:layout_constraintStart_toEndOf="@id/iv_phone"
         app:layout_constraintTop_toTopOf="@+id/iv_phone"
         tools:text="+7985683883683" />
 
-    <View
+ <!--   <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/orange"
-        app:layout_constraintBottom_toTopOf="@+id/btn_refactor_info" />
+        app:layout_constraintBottom_toTopOf="@+id/btn_refactor_info" />-->
 
     <TextView
         android:id="@+id/tv_calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
-        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/iv_calendar"
         app:layout_constraintStart_toEndOf="@id/iv_calendar"
@@ -113,7 +145,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
-        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/iv_email"
         app:layout_constraintStart_toEndOf="@id/iv_email"
@@ -134,7 +165,6 @@
         android:id="@+id/tv_birthday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
         android:textSize="16sp"
         android:layout_marginStart="34dp"
         app:layout_constraintBottom_toBottomOf="@+id/iv_birthday"
@@ -153,56 +183,17 @@
         app:layout_constraintTop_toTopOf="@+id/tv_birthday"
         app:srcCompat="@drawable/person_ic" />
 
-    <TextView
-        android:id="@+id/tv_full_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Danil Pesternikov" />
-
-    <TextView
-        android:id="@+id/info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        tools:text="Частное лицо"
-        android:textColor="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_full_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_full_name" />
-
-    <TextView
-        android:id="@+id/tv_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        tools:text="Номер пользователя 213123"
-        android:textSize="16sp"
-        android:textColor="@color/gray"
-        app:layout_constraintStart_toStartOf="@+id/info"
-        app:layout_constraintTop_toBottomOf="@+id/info" />
-
 
     <Button
         android:id="@+id/btn_refactor_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:background="@android:color/transparent"
-        android:gravity=""
-        android:paddingStart="45dp"
-        android:text="Изменить"
-        android:textColor="@color/orange"
-        android:textStyle="bold"
+        android:layout_marginHorizontal="10dp"
+        android:text="@string/Edit"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_location" />
+        app:layout_constraintTop_toBottomOf="@id/iv_birthday"
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
