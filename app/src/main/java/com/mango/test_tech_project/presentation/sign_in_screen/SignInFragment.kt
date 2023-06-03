@@ -7,6 +7,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.mango.test_tech_project.R
@@ -35,49 +36,19 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
                     is Resource.Success -> {
                         if (it.data) {
                             Log.d("SignInLog", "Success")
-                            with(binding) {
-                                tilVerify.visibility = View.VISIBLE
-                            }
-                        }
-                    }
-
-                    is Resource.Loading -> {
-                        Log.d("SignInLog", "Loading")
-                        with(binding) {
-                            tilVerify.visibility = View.GONE
-                        }
-                    }
-
-                    is Resource.Error -> {
-                        Log.d("SignInLog", "Error")
-                        with(binding) {
-                            tilVerify.visibility = View.GONE
-                        }
-                    }
-
-                }
-            }.collect()
-        }
-
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.isUserExists.onEach {
-                when (it) {
-                    is Resource.Success -> {
-                        if (it.data) {
-                            Log.d("VerifyCodeLog", "Success")
-                            findNavController().navigate(R.id.action_signInFragment_to_profileFragment)
+                            val direction = SignInFragmentDirections.actionSignInFragmentToVerifyFragment(binding.tiEtPhoneNumber.text.toString())
+                            findNavController().navigate(direction)
                         } else {
                             findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
                         }
                     }
 
                     is Resource.Loading -> {
-                        Log.d("VerifyCodeLog", "Loading")
+                        Log.d("SignInLog", "Loading")
                     }
 
                     is Resource.Error -> {
-                        Log.d("VerifyCodeLog", "Error")
+                        Log.d("SignInLog", "Error")
                     }
 
                 }
@@ -87,10 +58,6 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
         binding.button.setOnClickListener {
             viewModel.signIn(PhoneBase(binding.tiEtPhoneNumber.text.toString()))
-        }
-
-        binding.applyBtn.setOnClickListener {
-            viewModel.verifyCode(CheckAuthCode(binding.tiEtPhoneNumber.text.toString(), binding.tiEtVerify.text.toString()))
         }
     }
 }

@@ -13,6 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -28,11 +29,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 if (it != null) {
                     Log.d("InfoProfileLog", it.toString())
                     with(binding.infoPerson) {
-                        tvId.text = it.id.toString()
-                        tvFullName.text = it.username
+                        val localDate = LocalDate.parse(it.birthday)
+                        tvFullName.text = it.name
+                        tvId.text = "Пользователь номер ${it.id}"
+                        tvEmail.text = it.username
                         tvPhone.text = it.phone
                         tvLocation.text = it.city
                         tvCalendar.text = it.created
+                        tvBirthday.text = it.birthday
+                        ivZodiac.setImageResource(determineZodiacSign(localDate.dayOfMonth, localDate.monthValue))
                     }
 
                 } else {
@@ -41,6 +46,96 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 }
 
             }.collect()
+        }
+    }
+
+    private fun determineZodiacSign(day: Int, month: Int) = when (month) {
+        1 -> {
+            if (day <= 19) {
+                R.drawable.zodiac_10
+            } else {
+                R.drawable.zodiac_11
+            }
+        }
+        2 -> {
+            if (day <= 18) {
+                R.drawable.zodiac_11
+            } else {
+                R.drawable.zodiac_12
+            }
+        }
+        3 -> {
+            if (day <= 20) {
+                R.drawable.zodiac_12
+            } else {
+                R.drawable.zodiac_1
+            }
+        }
+        4 -> {
+            if (day <= 19) {
+                R.drawable.zodiac_1
+            } else {
+                R.drawable.zodiac_2
+            }
+        }
+        5 -> {
+            if (day <= 20) {
+                R.drawable.zodiac_2
+            } else {
+                R.drawable.zodiac_3
+            }
+        }
+        6 -> {
+            if (day <= 20) {
+                R.drawable.zodiac_3
+            } else {
+                R.drawable.zodiac_4
+            }
+        }
+        7 -> {
+            if (day <= 22) {
+                R.drawable.zodiac_4
+            } else {
+                R.drawable.zodiac_5
+            }
+        }
+        8 -> {
+            if (day <= 22) {
+                R.drawable.zodiac_5
+            } else {
+                R.drawable.zodiac_6
+            }
+        }
+        9 -> {
+            if (day <= 22) {
+                R.drawable.zodiac_6
+            } else {
+                R.drawable.zodiac_7
+            }
+        }
+        10 -> {
+            if (day <= 22) {
+                R.drawable.zodiac_7
+            } else {
+                R.drawable.zodiac_8
+            }
+        }
+        11 -> {
+            if (day <= 21) {
+                R.drawable.zodiac_8
+            } else {
+                R.drawable.zodiac_9
+            }
+        }
+        12 -> {
+            if (day <= 21) {
+                R.drawable.zodiac_9
+            } else {
+                R.drawable.zodiac_10
+            }
+        }
+        else -> {
+            R.drawable.person_ic
         }
     }
 

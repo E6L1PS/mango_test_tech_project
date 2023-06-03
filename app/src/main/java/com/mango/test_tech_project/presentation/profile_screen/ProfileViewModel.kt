@@ -26,7 +26,6 @@ class ProfileViewModel @Inject constructor(
 
     init {
         getInfo()
-        uploadProfileInfoUseCase()
     }
 
     private fun getInfo() {

@@ -51,6 +51,8 @@ class UserRepositoryImpl @Inject constructor(
                     .putString(Constants.JWT_ACCESS_KEY, response.body()?.access_token)
                     .putString(Constants.JWT_REFRESH_KEY, response.body()?.refresh_token)
                     .apply()
+
+                dao.deleteAllUserInfo()
                 Resource.success(Unit)
             } else {
                 Resource.error(response.message(), null)

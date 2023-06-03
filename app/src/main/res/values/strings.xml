@@ -5,4 +5,6 @@
     <string name="SignUp">Регистрация</string>
     <string name="enter_number_hint">Введите номер телефона</string>
     <string name="verify_hint">Подтвердите код</string>
+    <string name="username">Введите username</string>
+    <string name="name">Введите имя</string>
 </resources>

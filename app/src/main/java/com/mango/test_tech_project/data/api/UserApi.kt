@@ -12,7 +12,7 @@ interface UserApi {
     @POST("api/v1/users/send-auth-code/")
     suspend fun signIn(@Body request: PhoneBase): Response<Success>
 
-    @POST("api/v1/users/register-auth-code/")
+        @POST("api/v1/users/register/")
     suspend fun signUp(@Body request: RegisterIn): Response<Token>
 
     @POST("api/v1/users/check-auth-code/")

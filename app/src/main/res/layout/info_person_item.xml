@@ -120,6 +120,38 @@
         app:layout_constraintTop_toTopOf="@+id/iv_email"
         tools:text="danils003@mail.ru" />
 
+    <ImageView
+        android:id="@+id/iv_birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_location"
+        app:srcCompat="@drawable/cake_ic" />
+
+
+    <TextView
+        android:id="@+id/tv_birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_marginStart="34dp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_birthday"
+        app:layout_constraintStart_toEndOf="@+id/iv_birthday"
+        app:layout_constraintTop_toTopOf="@+id/iv_birthday"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="2023-05-10" />
+
+    <ImageView
+        android:id="@+id/iv_zodiac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_birthday"
+        app:layout_constraintStart_toEndOf="@+id/tv_birthday"
+        app:layout_constraintTop_toTopOf="@+id/tv_birthday"
+        app:srcCompat="@drawable/person_ic" />
 
     <TextView
         android:id="@+id/tv_full_name"
@@ -140,7 +172,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
-        android:text="Частное лицо"
+        tools:text="Частное лицо"
         android:textColor="@color/gray"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/tv_full_name"
@@ -151,7 +183,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Номер пользователя 213123"
+        tools:text="Номер пользователя 213123"
         android:textSize="16sp"
         android:textColor="@color/gray"
         app:layout_constraintStart_toStartOf="@+id/info"
