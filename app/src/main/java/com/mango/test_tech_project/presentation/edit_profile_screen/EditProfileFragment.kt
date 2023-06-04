@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.OpenableColumns
 import android.util.Base64
 import android.util.Log
 import android.view.View
@@ -47,21 +48,6 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile) {
                     .into(binding.ivAvatar)
             }
         }
-
-    private fun selectImagesFromGallery() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        intent.type = "image/*"
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
-        pickImagesLauncher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-    }
-
-    private suspend fun readBytesAndEncodeToBase64(uri: Uri): String = withContext(Dispatchers.IO) {
-        val inputStream = requireContext().contentResolver.openInputStream(uri)
-        inputStream.use {
-            Base64.encodeToString(it!!.readBytes(), Base64.DEFAULT)
-        }
-    }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -109,7 +95,7 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile) {
                             UserUpdate(
                                 avatar = Avatar(
                                     readBytesAndEncodeToBase64(uriImage!!),
-                                    "todofilename.jpg"
+                                    getFileName(uriImage!!)
                                 ),
                                 name = tiEtName.text.toString(),
                                 birthday = tiEtBirthday.text.toString(),
@@ -126,7 +112,31 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile) {
             }
         }
 
+
     }
 
+    private fun selectImagesFromGallery() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        intent.type = "image/*"
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+        pickImagesLauncher.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+    }
+
+    private suspend fun readBytesAndEncodeToBase64(uri: Uri): String = withContext(Dispatchers.IO) {
+        val inputStream = requireContext().contentResolver.openInputStream(uri)
+        inputStream.use {
+            Base64.encodeToString(it!!.readBytes(), Base64.DEFAULT)
+        }
+    }
+
+    private fun getFileName(uri: Uri): String {
+        val cursor = requireContext().contentResolver.query(uri, null, null, null, null)
+        val nameIndex = cursor?.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+        cursor?.moveToFirst()
+        val name = cursor?.getString(nameIndex ?: 0)
+        cursor?.close()
+        Log.d("fileName", "$name")
+        return name ?: ""
+    }
 
 }
