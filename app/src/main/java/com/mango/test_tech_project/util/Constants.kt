@@ -4,6 +4,7 @@ object Constants {
     const val BASE_URL = "https://plannerok.ru/"
     const val JWT_ACCESS_KEY = "access_token"
     const val JWT_REFRESH_KEY = "refresh_token"
+    const val CURRENT_USER_ID = "id"
 
     val excludedUrls = listOf(
         "/api/v1/users/register/", "/api/v1/users/send-auth-code/", "/api/v1/users/check-auth-code/",

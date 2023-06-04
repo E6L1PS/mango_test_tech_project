@@ -57,12 +57,7 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile) {
                 when (it) {
                     is Resource.Success -> {
                         Log.d("userUpdateSendLog", "Success")
-
-                        val direction =
-                            EditProfileFragmentDirections.actionEditProfileFragmentToNavigationProfile(
-                                args.id
-                            )
-                        findNavController().navigate(direction)
+                        findNavController().navigate(R.id.action_editProfileFragment_to_navigation_profile)
                     }
 
                     is Resource.Loading -> {
@@ -91,7 +86,6 @@ class EditProfileFragment : Fragment(R.layout.fragment_edit_profile) {
                             .show()
                     } else {
                         viewModel.updateUserInfo(
-                            args.id,
                             UserUpdate(
                                 avatar = Avatar(
                                     readBytesAndEncodeToBase64(uriImage!!),

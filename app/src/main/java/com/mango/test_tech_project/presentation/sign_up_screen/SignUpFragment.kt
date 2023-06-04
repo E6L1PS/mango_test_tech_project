@@ -37,11 +37,8 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 when (it) {
                     is Resource.Success -> {
                         Log.d("isRegistered", "Success")
-                        val direction =
-                            SignUpFragmentDirections.actionSignUpFragmentToProfileFragment(
-                                it.data ?: 0
-                            )
-                        findNavController().navigate(direction)
+                        viewModel.updateCurrentUser(it.data ?: -1)
+                        findNavController().navigate(R.id.action_signUpFragment_to_profileFragment)
                     }
 
                     is Resource.Loading -> {

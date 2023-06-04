@@ -26,22 +26,21 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private val binding by viewBinding<FragmentProfileBinding>()
     private val viewModel by viewModels<ProfileViewModel>()
-    private val args by navArgs<ProfileFragmentArgs>()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(binding.infoPerson) {
-            btnRefactorInfo.setOnClickListener {
+        with(binding) {
+            infoPerson.btnRefactorInfo.setOnClickListener {
                 val direction =
-                    ProfileFragmentDirections.actionNavigationProfileToEditProfileFragment(
-                        tvEmail.text.toString(),
-                        args.id
-                    )
+                    ProfileFragmentDirections.actionNavigationProfileToEditProfileFragment(infoPerson.tvEmail.text.toString())
                 findNavController().navigate(direction)
             }
-
+            btnLogout.setOnClickListener {
+                viewModel.clearTokens()
+                findNavController().navigate(R.id.action_navigation_profile_to_signInFragment)
+            }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

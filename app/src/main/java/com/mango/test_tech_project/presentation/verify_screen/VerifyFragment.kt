@@ -39,17 +39,17 @@ class VerifyFragment : Fragment(R.layout.fragment_verify) {
                         val loginOut = it.data
 
                         if (loginOut != null) {
-                            findNavController().navigate(
-                                if (loginOut.is_user_exists) {
-                                    VerifyFragmentDirections.actionVerifyFragmentToNavigationProfile(
-                                        loginOut.user_id
-                                    )
-                                } else {
+
+                            if (loginOut.is_user_exists) {
+                                viewModel.updateCurrentUser(loginOut.user_id)
+                                findNavController().navigate(R.id.action_verifyFragment_to_navigation_profile)
+                            } else {
+                                findNavController().navigate(
                                     VerifyFragmentDirections.actionVerifyFragmentToSignUpFragment(
                                         args.number
                                     )
-                                }
-                            )
+                                )
+                            }
 
 
                         }

@@ -18,4 +18,5 @@
     <string name="EditProfile">Редактировать профиль</string>
     <string name="Next">Далее</string>
     <string name="NewCode">Получить новый код</string>
+    <string name="Exit">Выйти</string>
 </resources>
