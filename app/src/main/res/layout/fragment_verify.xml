@@ -9,13 +9,12 @@
         android:id="@+id/sms_code_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/btn_new_code"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:scv_codeLength="6"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/info_number"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.1"
+        app:scv_codeLength="6" />
 
     <TextView
         android:id="@+id/info_number"
@@ -34,11 +33,12 @@
         android:id="@+id/btn_new_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Получить новый код"
         android:layout_marginHorizontal="10dp"
+        android:text="@string/NewCode"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.mango.test_tech_project.presentation.profile_screen
 
 import android.util.Log
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mango.test_tech_project.data.db.entity.UserInfoEntity
@@ -18,21 +19,20 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     private val getProfileInfoUseCase: GetProfileInfoUseCase,
     private val uploadProfileInfoUseCase: UploadProfileInfoUseCase,
+    savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
-    private val _profileInfo = MutableStateFlow<UserInfoEntity?>(null)
+    private val _profileInfo = MutableStateFlow<Resource<UserInfoEntity?>>(Resource.loading())
     val profileInfo = _profileInfo.asStateFlow()
 
-
     init {
-        getInfo()
+        getInfo(savedStateHandle.get<Int>("id") ?: 0)
     }
 
-    private fun getInfo() {
-
-        Log.d("InfoProfileLog", "init")
+    private fun getInfo(id: Int) {
+        Log.d("InfoProfileLog", "$id")
         viewModelScope.launch {
-            _profileInfo.emitAll(getProfileInfoUseCase.execute())
+            _profileInfo.emitAll(getProfileInfoUseCase.execute(id))
         }
     }
 

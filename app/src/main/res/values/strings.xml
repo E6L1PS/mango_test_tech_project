@@ -16,4 +16,6 @@
     <string name="enter_instagram">Введите ссылку на instagram</string>
     <string name="Upload">Обновить</string>
     <string name="EditProfile">Редактировать профиль</string>
+    <string name="Next">Далее</string>
+    <string name="NewCode">Получить новый код</string>
 </resources>

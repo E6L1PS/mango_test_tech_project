@@ -10,8 +10,8 @@ class EditProfileUseCase @Inject constructor(
     private val userRepository: UserRepository,
 ) {
 
-    suspend fun execute(userUpdate: UserUpdate): Resource<UserUpdateSend?> {
-        return userRepository.updateCurrentUser(userUpdate)
+    suspend fun execute(id: Int, userUpdate: UserUpdate): Resource<UserUpdateSend?> {
+        return userRepository.updateCurrentUser(id, userUpdate)
     }
 
 }

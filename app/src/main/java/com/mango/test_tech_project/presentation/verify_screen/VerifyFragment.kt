@@ -1,8 +1,11 @@
 package com.mango.test_tech_project.presentation.verify_screen
 
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -13,7 +16,6 @@ import com.fraggjkee.smsconfirmationview.SmsConfirmationView
 import com.mango.test_tech_project.R
 import com.mango.test_tech_project.data.model.CheckAuthCode
 import com.mango.test_tech_project.databinding.FragmentVerifyBinding
-import com.mango.test_tech_project.presentation.sign_in_screen.SignInFragmentDirections
 import com.mango.test_tech_project.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -31,23 +33,35 @@ class VerifyFragment : Fragment(R.layout.fragment_verify) {
         super.onViewCreated(view, savedInstanceState)
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.isUserExists.onEach {
+            viewModel.loginOut.onEach {
                 when (it) {
                     is Resource.Success -> {
-                        if (it.data) {
-                            Log.d("VerifyLog", "Success")
-                            findNavController().navigate(R.id.action_verifyFragment_to_navigation_profile)
-                        } else {
-                            val direction = VerifyFragmentDirections.actionVerifyFragmentToSignUpFragment(args.number)
-                            findNavController().navigate(direction)
+                        val loginOut = it.data
+
+                        if (loginOut != null) {
+                            findNavController().navigate(
+                                if (loginOut.is_user_exists) {
+                                    VerifyFragmentDirections.actionVerifyFragmentToNavigationProfile(
+                                        loginOut.user_id
+                                    )
+                                } else {
+                                    VerifyFragmentDirections.actionVerifyFragmentToSignUpFragment(
+                                        args.number
+                                    )
+                                }
+                            )
+
+
                         }
                     }
 
                     is Resource.Loading -> {
+                        // TODO placeholder for loading
                         Log.d("VerifyLog", "Loading")
                     }
 
                     is Resource.Error -> {
+                        Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
                         Log.d("VerifyLog", "Error: ${it.message}")
                     }
 
@@ -55,10 +69,17 @@ class VerifyFragment : Fragment(R.layout.fragment_verify) {
             }.collect()
         }
 
-        binding.smsCodeView.onChangeListener = SmsConfirmationView.OnChangeListener { code, isComplete ->
-            if (isComplete) {
-                viewModel.verifyCode(CheckAuthCode(args.number, code))
-            }
+        with(binding) {
+            infoNumber.text = "Мы отправили код на номер ${args.number}"
+            smsCodeView.onChangeListener =
+                SmsConfirmationView.OnChangeListener { code, isComplete ->
+                    if (isComplete) {
+                        viewModel.verifyCode(CheckAuthCode(args.number, code))
+                        val inputMethodManager =
+                            requireActivity().getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                        inputMethodManager.hideSoftInputFromWindow(smsCodeView.windowToken, 0)
+                    }
+                }
         }
 
     }

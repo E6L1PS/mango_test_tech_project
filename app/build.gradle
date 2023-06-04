@@ -42,6 +42,7 @@ android {
 dependencies {
     implementation 'com.fredporciuncula:phonemoji:1.5.1'
     implementation "com.github.fraggjkee:sms-confirmation-view:1.7.1"
+    implementation Libs.Other.Glide
     implementation Libs.Other.ViewBindingDelegate
 
     implementation Libs.Android.Room

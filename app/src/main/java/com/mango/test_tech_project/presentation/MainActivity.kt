@@ -1,13 +1,11 @@
 package com.mango.test_tech_project.presentation
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.mango.test_tech_project.R
 import com.mango.test_tech_project.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,8 +23,6 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        val bottomNavigationView = binding.bnv
-
         navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fcv_main) as NavHostFragment
         navController = navHostFragment.navController
@@ -40,18 +36,6 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            bottomNavigationView.visibility = if (destination.id == R.id.signInFragment ||
-                destination.id == R.id.signUpFragment  ||
-                destination.id == R.id.verifyFragment  ||
-                destination.id == R.id.editProfileFragment) {
-                View.GONE
-            } else {
-                View.VISIBLE
-            }
-        }
-
         setupActionBarWithNavController(navController, appBarConfiguration)
-        bottomNavigationView.setupWithNavController(navController)
     }
 }

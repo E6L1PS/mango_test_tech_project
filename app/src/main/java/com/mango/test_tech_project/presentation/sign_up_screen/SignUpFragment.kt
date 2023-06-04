@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -34,14 +33,19 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         binding.tiEtPhoneNumber.setText(args.number)
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.isRegistered.onEach {
+            viewModel.id.onEach {
                 when (it) {
                     is Resource.Success -> {
                         Log.d("isRegistered", "Success")
-                        findNavController().navigate(R.id.action_signUpFragment_to_profileFragment)
+                        val direction =
+                            SignUpFragmentDirections.actionSignUpFragmentToProfileFragment(
+                                it.data ?: 0
+                            )
+                        findNavController().navigate(direction)
                     }
 
                     is Resource.Loading -> {
+                        // TODO placeholder for loading
                         Log.d("isRegistered", "Loading")
                     }
 

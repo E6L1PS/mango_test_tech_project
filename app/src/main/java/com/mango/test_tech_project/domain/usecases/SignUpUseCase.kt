@@ -8,7 +8,7 @@ import javax.inject.Inject
 class SignUpUseCase @Inject constructor(
     private val userRepository: UserRepository,
 ) {
-    suspend fun execute(registerIn: RegisterIn): Resource<Unit> {
+    suspend fun execute(registerIn: RegisterIn): Resource<Int?> {
         return userRepository.signUp(registerIn)
     }
 }

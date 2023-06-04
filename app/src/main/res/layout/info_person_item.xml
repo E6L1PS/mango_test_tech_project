@@ -61,7 +61,7 @@
             android:id="@+id/iv_avatar"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            app:srcCompat="@drawable/user" />
+            tools:srcCompat="@drawable/user" />
     </androidx.cardview.widget.CardView>
 
 
@@ -188,7 +188,6 @@
         android:id="@+id/btn_refactor_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
         android:text="@string/Edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

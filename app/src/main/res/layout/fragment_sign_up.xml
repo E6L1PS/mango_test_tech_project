@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="100dp"
-        android:hint="@string/enter_number_hint"
+        app:boxStrokeColor="@color/orange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -24,7 +24,7 @@
             android:enabled="false"
             android:inputType="numberDecimal"
             android:maxLength="16"
-            android:textColor="@color/gray" />
+            android:textColor="@color/orange"  />
 
     </com.fredporciuncula.phonemoji.PhonemojiTextInputLayout>
 
@@ -38,8 +38,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:hint="@string/name"
-        app:boxStrokeColor="@color/black"
-        app:hintTextColor="@color/black"
+        app:boxStrokeColor="@color/orange"
+        app:hintTextColor="@color/orange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_phone_number"
@@ -51,8 +51,7 @@
             android:layout_height="wrap_content"
             android:maxLength="50"
             android:singleLine="true"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black" />
+            android:textColor="@color/orange" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -65,8 +64,8 @@
         android:layout_marginEnd="32dp"
         android:hint="@string/username"
         app:prefixTextColor="@color/gray"
-        app:boxStrokeColor="@color/black"
-        app:hintTextColor="@color/black"
+        app:boxStrokeColor="@color/orange"
+        app:hintTextColor="@color/orange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_name"
@@ -77,9 +76,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="50"
+            android:inputType="text"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
             android:singleLine="true"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black" />
+            android:textColor="@color/orange"  />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -87,7 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:text="Далее"
+        android:text="@string/Next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

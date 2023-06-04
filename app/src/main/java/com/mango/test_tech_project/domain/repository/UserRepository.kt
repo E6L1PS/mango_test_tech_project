@@ -9,16 +9,15 @@ interface UserRepository {
 
     suspend fun signIn(phoneBase: PhoneBase): Resource<Boolean>
 
-    suspend fun signUp(registerIn: RegisterIn): Resource<Unit>
+    suspend fun signUp(registerIn: RegisterIn): Resource<Int?>
 
-    suspend fun checkAuthCode(checkAuthCode: CheckAuthCode): Resource<Boolean>
+    suspend fun checkAuthCode(checkAuthCode: CheckAuthCode): Resource<LoginOut?>
 
     suspend fun refreshToken(): Resource<Unit>
 
     suspend fun getCurrentUser()
 
+    fun getUserInfo(id: Int): Flow<Resource<UserInfoEntity?>>
 
-    fun getUserInfo(): Flow<UserInfoEntity>
-
-    suspend fun updateCurrentUser(userUpdate: UserUpdate): Resource<UserUpdateSend?>
+    suspend fun updateCurrentUser(id: Int, userUpdate: UserUpdate): Resource<UserUpdateSend?>
 }

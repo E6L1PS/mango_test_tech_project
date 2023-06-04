@@ -16,12 +16,12 @@ class SignUpViewModel @Inject constructor(
     private val signUpUseCase: SignUpUseCase,
 ) : ViewModel() {
 
-    private val _isRegistered = MutableStateFlow<Resource<Unit>>(Resource.loading())
-    val isRegistered = _isRegistered.asStateFlow()
+    private val _id = MutableStateFlow<Resource<Int?>>(Resource.loading())
+    val id = _id.asStateFlow()
 
     fun signUp(registerIn: RegisterIn) {
         viewModelScope.launch {
-            _isRegistered.emit(signUpUseCase.execute(registerIn))
+            _id.emit(signUpUseCase.execute(registerIn))
         }
     }
 }
